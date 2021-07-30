@@ -7,7 +7,7 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "metal") {
 
-            setMetal(parseInt(event.target.value), parseFloat(event.target.title))
+            setMetal(parseInt(event.target.value))
             // event.target.checked = true
             // document.dispatchedEvent( new CustomEvent("state changed"))
         }
