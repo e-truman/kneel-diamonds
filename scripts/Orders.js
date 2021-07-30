@@ -21,7 +21,6 @@ const buildOrderListItem = (order) => {
         }
     )
 
-
     const foundStyle = styles.find(
         (style) => {
             return style.id === order.styleId

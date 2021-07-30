@@ -24,7 +24,7 @@ export const Metals = () => {
 
         // if(metal.id === ordeBuilder.metalId())
         html += `<li>
-            <input type="radio" name="metal" title = "${metal.price}" value="${metal.id}" /> ${metal.metal}
+            <input type="radio" name="metal" value="${metal.id}" /> ${metal.metal}
         </li>`
             
 //     } else {
