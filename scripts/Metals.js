@@ -7,7 +7,7 @@ document.addEventListener(
     (event) => {
         if (event.target.name === "metal") {
 
-            setMetal(parseInt(event.target.value))
+            setMetal(parseInt(event.target.value), parseInt(event.target.price))
             // event.target.checked = true
             // document.dispatchedEvent( new CustomEvent("state changed"))
         }
@@ -24,7 +24,7 @@ export const Metals = () => {
 
         // if(metal.id === ordeBuilder.metalId())
         html += `<li>
-            <input type="radio" name="metal" value="${metal.id}" /> ${metal.metal}
+            <input type="radio" name="metal" price = "${metal.price}" value="${metal.id}" /> ${metal.metal}
         </li>`
             
 //     } else {

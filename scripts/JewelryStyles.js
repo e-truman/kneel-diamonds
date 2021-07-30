@@ -6,7 +6,7 @@ document.addEventListener(
     "change",
     (event) => {
         if (event.target.name === "style") {
-            setStyle(parseInt(event.target.value))
+            setStyle(parseInt(event.target.value), parseInt(event.target.price))
         }
     }
 )
@@ -17,7 +17,7 @@ export const JewelryStyles = () => {
     // Use .map() for converting objects to <li> elements
     const listItemsArray = styles.map(style => {
         return `<li>
-            <input type="radio" name="style" value="${style.id}" /> ${style.style}
+        <input type="radio" name="style" price="${style.price}" value="${style.id}" /> ${style.style}
         </li>`
 
     })

@@ -53,16 +53,19 @@ export const getOrders = () => {
     return database.customOrders.map(order => ({...order}))
 }
 
-export const setMetal = (id) => {
+export const setMetal = (id, price) => {
     database.orderBuilder.metalId = id
+    database.orderBuilder.metalPrice = price
 }
 
-export const setSize = (id) => {
+export const setSize = (id, price) => {
     database.orderBuilder.sizeId = id
+    database.orderBuilder.sizePrice = price
 }
 
-export const setStyle = (id) => {
+export const setStyle = (id, price) => {
     database.orderBuilder.styleId = id
+    database.orderBuilder.stylePrice = price
 }
 
 
@@ -78,6 +81,8 @@ export const addCustomOrder = () => {
     // Add a timestamp to the order
     newOrder.timestamp = Date.now()
 
+    newOrder.finalPrice = database.orderBuilder.stylePrice 
+
     // Add the new order object to custom orders state
     database.customOrders.push(newOrder)
 
@@ -87,3 +92,9 @@ export const addCustomOrder = () => {
     // Broadcast a notification that permanent state has changed
     document.dispatchEvent(new CustomEvent("stateChanged"))
 }
+
+
+
+
+
+// + database.customOrders.sizePrice + database.customOrders.metalPrice
