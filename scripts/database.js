@@ -29,10 +29,10 @@ const database = {
     customOrders: [
         {
             id: 1,
-            metalId: 3,
-            sizeId: 2,
-            styleId: 3,
-            timestamp: 1614659931693
+            // metalId: 3,
+            // sizeId: 2,
+            // styleId: 3,
+            // timestamp: 1614659931693
         }
     ]
 }
@@ -81,7 +81,7 @@ export const addCustomOrder = () => {
     // Add a timestamp to the order
     newOrder.timestamp = Date.now()
 
-    newOrder.finalPrice = database.orderBuilder.stylePrice 
+    newOrder.finalPrice = (database.orderBuilder.stylePrice + database.orderBuilder.sizePrice + database.orderBuilder.metalPrice)
 
     // Add the new order object to custom orders state
     database.customOrders.push(newOrder)
@@ -97,4 +97,4 @@ export const addCustomOrder = () => {
 
 
 
-// + database.customOrders.sizePrice + database.customOrders.metalPrice
+// 
