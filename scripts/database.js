@@ -53,14 +53,14 @@ export const getOrders = () => {
     return database.customOrders.map(order => ({...order}))
 }
 
-export const setMetal = (id) => {
+export const setMetal = (id, price) => {
     database.orderBuilder.metalId = id
-    // database.orderBuilder.metalPrice = price
+    database.orderBuilder.metalPrice = price
 }
 
-export const setSize = (id) => {
+export const setSize = (id, price) => {
     database.orderBuilder.sizeId = id
-    // database.orderBuilder.sizePrice = price
+    database.orderBuilder.sizePrice = price
 }
 
 export const setStyle = (id) => {
@@ -80,6 +80,8 @@ export const addCustomOrder = () => {
 
     // Add a timestamp to the order
     newOrder.timestamp = Date.now()
+
+    // totalCost= database.orderBuilder.sizePrice + database.orderBuilder.metalPrice + database.orderBuilder.stylePrice
 
     // Add the new order object to custom orders state
     database.customOrders.push(newOrder)
