@@ -43,6 +43,10 @@ const database = {
     ]
 }
 
+export const getOrderBuilder = () => {
+    return {...database.orderBuilder}
+}
+
 export const getMetals = () => {
     return database.metals.map(metal => ({...metal}))
 }
@@ -65,22 +69,22 @@ export const getOrders = () => {
 
 export const setMetal = (id) => {
     database.orderBuilder.metalId = id
-    // database.orderBuilder.metalPrice = price
+    document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
 export const setSize = (id) => {
     database.orderBuilder.sizeId = id
-    // database.orderBuilder.sizePrice = price
+    document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
 export const setStyle = (id) => {
     database.orderBuilder.styleId = id
-    // database.orderBuilder.stylePrice = price
+    document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
 export const setType = (id) => {
     database.orderBuilder.typeId = id
-    // database.orderBuilder.stylePrice = price
+    document.dispatchEvent( new CustomEvent("stateChanged") )
 }
 
 
@@ -90,9 +94,14 @@ export const addCustomOrder = () => {
     const newOrder = {...database.orderBuilder}
 
     // Add a new primary key to the object
+
+    if (database.customOrders.length === 0){
+        newOrder.id =1
+    }
+    else {
     const lastIndex = database.customOrders.length - 1
     newOrder.id = database.customOrders[lastIndex].id + 1
-
+    }
     // Add a timestamp to the order
     newOrder.timestamp = Date.now()
 
